@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "768122741812",
+    "project_id": "submissionone-5bfc8",
+    "storage_bucket": "submissionone-5bfc8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:768122741812:android:d67a703a2220889c235661",
+        "android_client_info": {
+          "package_name": "id.ac.unri.submission_one"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAY3EHNgf-kK3I1zhPdRoid6C_F9SqZ7ZA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

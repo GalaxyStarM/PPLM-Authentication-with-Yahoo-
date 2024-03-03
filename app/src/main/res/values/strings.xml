@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Submission_One</string>
+    <string name="login">Login</string>
+    <string name="email_input"> Email</string>
+    <string name="password_hint">   Password</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="create_acc">Don\'t have an account yet? Register here</string>
+    <string name="confirm_password_hint">   Confirm Password</string>
+    <string name="back_to_login">Already have an account? Login here</string>
+    <string name="create_account">Create Account</string>
+    <string name="create_acc2">Please fill the input below here</string>
+    <string name="full_name">   Full Name</string>
+    <string name="register">Register</string>
+    <string name="confirm_pass_check">Password is not matching.</string>
+    <string name="empty_field">Empty fields are not allowed</string>
+    <string name="text_user">User</string>
+    <string name="success_signup">Sign up successfully</string>
+    <string name="logout">Logout</string>
+    <string name="forget_password">Forget Password</string>
+    <string name="email_error">Email can\'\t be empty</string>
+    <string name="reset_password">Check your email to reset password</string>
+</resources>
