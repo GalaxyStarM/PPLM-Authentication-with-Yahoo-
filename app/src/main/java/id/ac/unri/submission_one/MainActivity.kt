@@ -3,8 +3,7 @@ package id.ac.unri.submission_one
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -28,13 +27,27 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding?.root)
-        supportActionBar
 
         firebaseAuth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance()
         channelList = ArrayList()
         recyclerView = binding?.rvChannel!!
         recyclerView.layoutManager = LinearLayoutManager(this)
+
+        binding?.topAppBar?.setOnMenuItemClickListener { menuItem ->
+            when(menuItem.itemId){
+                R.id.menu_logout -> {
+                    firebaseAuth.signOut()
+                    clearLoginStatus()
+                    val intent = Intent (this, LoginActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                    true
+                }
+
+                else -> false
+            }
+        }
 
         val databaseRef = database.getReference("channel")
         databaseRef.addValueEventListener(object : ValueEventListener {
@@ -50,30 +63,10 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+                Log.e(TAG, "Database operation cancelled: ${error.message}")
             }
         })
 
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_logout, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when(item.itemId) {
-            R.id.menu_logout -> {
-                firebaseAuth.signOut()
-                clearLoginStatus()
-                val intent = Intent (this, LoginActivity::class.java)
-                startActivity(intent)
-                finish()
-                true
-            }
-
-            else -> super.onOptionsItemSelected(item)
-        }
     }
 
     override fun onBackPressed() {
@@ -86,5 +79,9 @@ class MainActivity : AppCompatActivity() {
         val editor = sharedPreferences.edit()
         editor.remove("isLoggedIn") // Hapus status login
         editor.apply()
+    }
+
+    companion object{
+        private var TAG = "MainActivity"
     }
 }
