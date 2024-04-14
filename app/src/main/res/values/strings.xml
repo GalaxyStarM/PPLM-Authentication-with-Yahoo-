@@ -25,4 +25,8 @@
     <string name="title_tv">Tv</string>
     <string name="title_image">Image</string>
     <string name="title_ads">Ads</string>
+    <string name="appId">ca-app-pub-3940256099942544~3347511713</string>
+    <string name="addUnitId">ca-app-pub-3940256099942544/9214589741</string>
+    <string name="interstitial_ad">Show Interstitial Ad</string>
+    <string name="interstitialId">ca-app-pub-3940256099942544/1033173712</string>
 </resources>
