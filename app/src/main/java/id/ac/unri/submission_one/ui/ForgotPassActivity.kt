@@ -1,11 +1,11 @@
-
-package id.ac.unri.submission_one
+package id.ac.unri.submission_one.ui
 
 import android.os.Bundle
 import android.text.TextUtils
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import id.ac.unri.submission_one.R
 import id.ac.unri.submission_one.databinding.ActivityForgotPassBinding
 
 class ForgotPassActivity : AppCompatActivity() {

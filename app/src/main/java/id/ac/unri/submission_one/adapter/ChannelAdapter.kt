@@ -1,10 +1,12 @@
-package id.ac.unri.submission_one
+package id.ac.unri.submission_one.adapter
 
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import id.ac.unri.submission_one.StreamingActivity.Companion.EXTRA_VIDEO_URL
+import id.ac.unri.submission_one.data.Channel
+import id.ac.unri.submission_one.ui.StreamingActivity
+import id.ac.unri.submission_one.ui.StreamingActivity.Companion.EXTRA_VIDEO_URL
 import id.ac.unri.submission_one.databinding.ItemChannelBinding
 
 class ChannelAdapter (private val channelList: List<Channel>) : RecyclerView.Adapter<ChannelAdapter.ChannelViewHolder>(){

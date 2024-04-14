@@ -1,6 +1,5 @@
-package id.ac.unri.submission_one
+package id.ac.unri.submission_one.ui
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -36,7 +35,7 @@ class SplashScreenActivity : AppCompatActivity() {
     }
 
     private fun isLoggedIn(): Boolean {
-        val sharedPreferences = getSharedPreferences("login_status", Context.MODE_PRIVATE)
+        val sharedPreferences = getSharedPreferences("login_status", MODE_PRIVATE)
         return sharedPreferences.getBoolean("isLoggedIn", false)
     }
 }

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_tv">
+
+    <fragment
+        android:id="@+id/navigation_tv"
+        android:name="id.ac.unri.submission_one.ui.TvFragment"
+        android:label="@string/title_tv"
+        tools:layout="@layout/fragment_tv" />
+
+    <fragment
+        android:id="@+id/navigation_image"
+        android:name="id.ac.unri.submission_one.ui.ImageFragment"
+        android:label="@string/title_image"
+        tools:layout="@layout/fragment_image" />
+
+    <fragment
+        android:id="@+id/navigation_ads"
+        android:name="id.ac.unri.submission_one.ui.AdsFragment"
+        android:label="@string/title_ads"
+        tools:layout="@layout/fragment_ads" />
+
+</navigation>

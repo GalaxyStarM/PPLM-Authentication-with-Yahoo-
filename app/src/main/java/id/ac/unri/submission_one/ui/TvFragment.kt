@@ -1,10 +1,12 @@
-package id.ac.unri.submission_one
+package id.ac.unri.submission_one.ui
 
-import android.content.Context
-import android.content.Intent
+import android.content.Context.MODE_PRIVATE
 import android.os.Bundle
 import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
@@ -12,42 +14,48 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import id.ac.unri.submission_one.databinding.ActivityMainBinding
+import id.ac.unri.submission_one.adapter.ChannelAdapter
+import id.ac.unri.submission_one.data.Channel
+import id.ac.unri.submission_one.databinding.FragmentTvBinding
 
-class MainActivity : AppCompatActivity() {
+/**
+ * A simple [Fragment] subclass.
+ * Use the [TvFragment.newInstance] factory method to
+ * create an instance of this fragment.
+ */
+class TvFragment : Fragment() {
 
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var database: FirebaseDatabase
     private lateinit var channelList: ArrayList<Channel>
     private lateinit var recyclerView: RecyclerView
 
-    private var binding: ActivityMainBinding? = null
+    private var _binding: FragmentTvBinding? = null
+    private val binding get() = _binding!!
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding?.root)
+
+    companion object{
+        const val ARG_SECTION_NUMBER = "section_number"
+        private const val TAG = "TvFragment"
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentTvBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         firebaseAuth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance()
         channelList = ArrayList()
-        recyclerView = binding?.rvChannel!!
-        recyclerView.layoutManager = LinearLayoutManager(this)
-
-        binding?.topAppBar?.setOnMenuItemClickListener { menuItem ->
-            when(menuItem.itemId){
-                R.id.menu_logout -> {
-                    firebaseAuth.signOut()
-                    clearLoginStatus()
-                    val intent = Intent (this, LoginActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                    true
-                }
-
-                else -> false
-            }
-        }
+        recyclerView = binding.rvChannel
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         val databaseRef = database.getReference("channel")
         databaseRef.addValueEventListener(object : ValueEventListener {
@@ -69,19 +77,15 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    override fun onBackPressed() {
-        super.onBackPressed()
-        finish()
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun clearLoginStatus() {
-        val sharedPreferences = getSharedPreferences("login_status", Context.MODE_PRIVATE)
+        val sharedPreferences = requireContext().getSharedPreferences("login_status", MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.remove("isLoggedIn") // Hapus status login
         editor.apply()
-    }
-
-    companion object{
-        private var TAG = "MainActivity"
     }
 }

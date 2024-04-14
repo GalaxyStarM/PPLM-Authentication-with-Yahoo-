@@ -1,4 +1,4 @@
-package id.ac.unri.submission_one
+package id.ac.unri.submission_one.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
+import id.ac.unri.submission_one.R
 import id.ac.unri.submission_one.databinding.ActivityRegisterBinding
 
 class RegisterActivity : AppCompatActivity() {
@@ -41,7 +42,11 @@ class RegisterActivity : AppCompatActivity() {
                     setLoadingState(true)
                     firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {
                         if (it.isSuccessful){
-                            Toast.makeText(this, getString(R.string.success_signup), Toast.LENGTH_LONG).show()
+                            Toast.makeText(
+                                this,
+                                getString(R.string.success_signup),
+                                Toast.LENGTH_LONG
+                            ).show()
                             finish()
                         }else{
                             Toast.makeText(this, it.exception.toString(), Toast.LENGTH_LONG).show()

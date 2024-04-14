@@ -1,4 +1,4 @@
-package id.ac.unri.submission_one
+package id.ac.unri.submission_one.ui
 
 import android.net.Uri
 import android.os.Bundle
@@ -7,6 +7,7 @@ import android.widget.MediaController
 import android.widget.VideoView
 import androidx.appcompat.app.AppCompatActivity
 import id.ac.unri.submission_one.databinding.ActivityStreamingBinding
+
 class StreamingActivity : AppCompatActivity() {
 
 //    private lateinit var playerView: PlayerView

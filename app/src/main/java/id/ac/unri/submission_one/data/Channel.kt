@@ -1,4 +1,4 @@
-package id.ac.unri.submission_one
+package id.ac.unri.submission_one.data
 
 data class Channel(
     val nama: String? = null,

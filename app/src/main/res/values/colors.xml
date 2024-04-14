@@ -4,5 +4,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="broken_white">#F4F4F4</color>
     <color name="light_grey">#DADADA</color>
+    <color name="hotpink">#D52B6E</color>
+    <color name="blue">#039BE5</color>
 
 </resources>

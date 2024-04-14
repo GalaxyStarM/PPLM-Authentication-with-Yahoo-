@@ -1,6 +1,5 @@
-package id.ac.unri.submission_one
+package id.ac.unri.submission_one.ui
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -9,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.OAuthProvider
+import id.ac.unri.submission_one.R
 import id.ac.unri.submission_one.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity(){
@@ -95,7 +95,7 @@ class LoginActivity : AppCompatActivity(){
     }
 
     private fun saveLoginStatus(isLoggedIn: Boolean) {
-        val sharedPreferences = getSharedPreferences("login_status", Context.MODE_PRIVATE)
+        val sharedPreferences = getSharedPreferences("login_status", MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.putBoolean("isLoggedIn", isLoggedIn)
         editor.apply()
